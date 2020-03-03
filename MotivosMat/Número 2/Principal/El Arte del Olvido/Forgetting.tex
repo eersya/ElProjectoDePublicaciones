@@ -1,0 +1,171 @@
+\documentclass[12pt,a4paper, spanish]{amsart}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amscd}
+%\usepackage[latin2]{inputenc}
+\usepackage{t1enc}
+\usepackage[mathscr]{eucal}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{pict2e}
+\usepackage{epic}
+\numberwithin{equation}{section}
+\usepackage[margin=2.9cm]{geometry}
+\usepackage{epstopdf} 
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+
+
+\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+
+ \def\numset#1{{\\mathbb #1}}
+
+ \usepackage{verse}
+
+\theoremstyle{plain}
+\newtheorem{Th}{Theorem}[section]
+\newtheorem{Lemma}[Th]{Lemma}
+\newtheorem{Cor}[Th]{Corollary}
+\newtheorem{Prop}[Th]{Proposition}
+
+ \theoremstyle{definition}
+\newtheorem{Def}[Th]{Definition}
+\newtheorem{Conj}[Th]{Conjecture}
+\newtheorem{Rem}[Th]{Remark}
+\newtheorem{?}[Th]{Problem}
+\newtheorem{Ex}[Th]{Example}
+
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Hom}{{\rm{Hom}}}
+\newcommand{\diam}{{\rm{diam}}}
+\newcommand{\ovl}{\overline}
+%\newcommand{\M}{\mathbb{M}}
+
+\bibliography{Olvido} 
+
+
+\begin{document}
+
+\title{El Arte del Olvido}
+
+
+\author[E. Lupercio]{Ernesto Lupercio}
+
+\address{Cinvestav \\ Departamento de Matemáticas \\
+CDMX  07360 \\ México} 
+
+\email{elupercio@gmail.com}
+
+
+ %\subjclass[2010]{Primary: 05C??. Secondary: 05C??}
+
+
+
+% \keywords{sample paper} 
+
+
+
+%\begin{abstract} The aim of this paper is to provide some starting point how to create mathematical papers with latex.
+%\end{abstract}
+
+\maketitle
+
+%\section{Introduction} 
+
+Jorge Luis Borges tenía una memoria extraordinaria\autocite[1]{WEBSITE:1}, podía citar \emph{verbatim} a Dante en italiano años después de haberlo leído\autocite[197]{rodriguez2005borges}. No es tan extraño que Borges inventara a Funes, que vive el atroz destino de no poder olvidar nada \autocite{borges1995funes}. 
+
+Recordarlo todo es tan trágico como olvidarlo todo (destino más común y no menos atroz):
+
+\begin{verse}
+	Long ago you kissed the names of the nine muses goodbye\\ 
+	and watched the quadratic equation pack its bag,\\
+	and even now as you memorize the order of the planets,\\
+\ 	\\
+	something else is slipping away, a state flower perhaps,\\ 
+	the address of an uncle, the capital of Paraguay.\footnote{Hace mucho te despediste de los nombres de las nueve musas/ y viste alejarse a la ecuación cuadrática/ y aún ahora, al memorizar el orden planetario/ algo mas te elude, una flor regional tal vez,/ la dirección de un tío, la capital del Paraguay.}
+\end{verse}
+
+Tener memoria absoluta sería como cargar en todo momento con una conexión a internet y una cámara de vídeo en la cabeza a toda partes. El ancestral pleito de las parejas (sobre quién dijo qué y cómo y cuándo) sería una cosa del pasado,  la tristeza de Funes globalizada y distópica\footnote{Ver, por ejemplo, el capítulo titulado \emph{The Entire History of You}, de la serie de televisión británica \emph{Black Mirror}.}. 
+
+La memoria y la inteligencia están íntimamente relacionadas. Las mentes más lúcidas poseen memorias excelentes recordando con asombrosa precisión conversaciones que ocurrieron años atrás. Por ejemplo, Maxim Kontsevich y Dennis Sullivan recuerdan miles de argumentos matemáticos de docenas de campos de estudio y los tratan con la familiaridad con que se tratan a los viejos amigos: después de años de no verse, se continúa la conversación como si nada.
+
+El olvido y la inteligencia son afines. Así como, en la escultura clásica, el arte consiste en quitar lo que sobra de un trozo de mármol para descubrir en su interior al David, de la misma manera, formar un cuerpo de conocimiento inteligible requiere olvidar mucho de lo leído y de lo escuchado. Tener el buen gusto de recordar lo esencial es también un arte de enorme sutileza: ``Para arruinar a un tonto, dale información'', propone un aforismo de Nassim Taleb\autocite{TalebAforismos}. ¿Quien no se ha sentido feliz y agradecido al encontrar una referencia que, con claridad y evitando complicaciones innecesarias, explica un asunto que otras cien referencias han complicado y confundido? El exceso de información, como el exceso de opciones\autocite[1]{zaid2004gondola}, puede ser letal. 
+
+
+
+Es razonable conjeturar que la mente humana para moldear sus \emph{qualia} hace algo parecido: olvidar. La mismísimas narrativas que las personas se cuentan a sí mismas sobre sus vidas\autocite{beck2015life} y que son fundamentales para su salud mental dependen importantemente del olvido: de eliminar millones de detalles que no vienen al caso (lo que desayune el jueves pasado) y de retener narrativas coherentes\autocite{mcadams2013psychological}; ``the most salient aspect of memory is forgetting''\autocite{harlow1971psychology}. 
+
+En estos días, las máquinas están aprendiendo a olvidar. En 2012, una red neural profunda de Google aprendió a identificar gatitos en vídeos de YouTube con bastante éxito. Google uso 16,000 microprocesadores para crear una red con más de un millardo de conexiones que, utilizando algoritmos de \emph{machine learning} logró aprender por sí sola a identificar gatitos\autocite{gatitos}. Pero eso era en 2012, a poco más de cinco años de distancia, la aplicación para celulares iNatualist es capaz de identificar las especies de plantas y animales a partir de fotos tomadas con un celular usando redes neuronales\autocite{iNaturalist}.  Curiosamente, nadie sabe a ciencia cierta cómo se las ingenian las computadoras para tener logros tan asombrosos con estas técnicas de aprendizaje profundo (\emph{deep learning}), ni sus propios programadores esperaban que funcionasen tan bien dado que el origen de los algoritmos son analogías incompletas con el cerebro, un sistema tan complicado y misterioso que no ha sido modelado con suficiente precisión. Sin embargo, Tishby y sus colaboradores\autocite{tishby2000information} han propuesto en su teoría de ``el cuello de botella informático'' (\emph{information bottleneck}) que el modo en que dichas redes neuronales están funcionando es a través del olvido. El algoritmo, la computadora, percibe los pixeles de la foto del gatito y primero logra olvidar que son píxeles (0-dimensionales) e identifica la aristas (1-dimensionales) relevantes a la figura como un fenómeno que emerge del olvido de los píxeles; a continuación, la red neuronal olvida las aristas y, de este olvido, emerge la combinatoria (entre las aristas) de la figura, una vez más, ocurre lo mismo: la computadora identifica los rasgos esenciales del gatito olvidando la combinatoria para que, en el último paso del proceso el fenómeno emergente sea el gato cuya \emph{qualia} en el alma de la computadora nació de los olvidos sucesivos: solo  olvidando (los pixeles), la red neuronal logra comprender el concepto de lo que es un gatito\autocite{walchover2017new}.  Al parecer, el dicho popular que dice que ``una educación es lo que queda cuando te has olvidado de todo lo que aprendiste''\autocite{QuoteEducation} se aplica también a las computadoras. 
+
+El olvido como principio de organización para producir conocimiento debe estar organizado en una especie de estructura fractal; por ejemplo, la matemática, la física, la química, la biología, la psicología y la sociología son como muñecas rusas: similares una a la que le sigue, difiriendo en la escala de los fenómenos que estudia cada una de estas disciplinas. 
+
+Pensemos en la relación entre la física y la química. En principio, uno podría usar las leyes de la mecánica cuántica y escribir un hamiltoniano para comprender cualquier reacción química pero, en la práctica esto es imposible: dicho hamiltoniano es usualmente demasiado complicado. Por esto, existe la química que, a grandes rasgos, podría describirse como una serie de narrativas donde se ha decidido olvidar lo que no es esencial (lo cual es todo un arte). Toda una nueva hueste de personajes (ácidos, bases, lípidos, carbohidratos, etc.) adquieren vida propia con sus motivaciones, afinidades e inclinaciones particulares. Este método narrativo de la química ha olvidado los hamiltonianos cuánticos (que tenían poca esperanza de ser comprendidos por su complejidad) y, al encontrar con inspiración a los personajes adecuados, se entiende la reacción con suficiente detalle para predecir y controlar miles de procesos y aplicaciones industriales. 
+
+Podemos explorar esta escalera fractal descriptiva y preguntarnos qué piensan en turno una física, una química, una bióloga y una socióloga cuando escuchan la palabra ``carbohidratos''. Este ejercicio mental (que es divertido e instructivo) sugiere que cada olvido desencadena nuevos modos de narrar y comprender un concepto que se ve teñido de nuevos \emph{fenómenos emergentes} que eran imposibles de observar o narrar en la descripción precedente, más detallada y, por lo tanto, más confusa para ciertas cosas.
+
+Ernst Mach: \emph{Strange as it may sound, the power of mathematics rests upon its evasion of all unnecessary thought and on its wonderful saving of mental operations.}\autocite[195]{mach1898popular}
+
+En la física, el olvido es una ley de la naturaleza: el tiempo es olvido de acuerdo a la segunda ley de la termodinámica. En la mecánica cuántica, el colapso de la función de onda lo implementa en el acto de conocer. Observar es olvidar. Transcurrir es olvidar. Pero, en este ensayo, quiero hablar de un olvido más elemental, más atávico. El olvido en matemáticas.
+
+En la matemática, el arte del olvido se llama \emph{abstracción}.
+
+Cinco manzanas, cinco peras, cinco pelotas: cinco, todo este mundo de posibilidades en una grafía: 5. Olvidando el sabor, el color, el aroma de las manzanas, nos quedamos solo con su número\footnote{Recordemos que el número 5 puede pensarse como la clase de equivalencia del conjunto $\{a,b,c,d,e\}$ bajo la relación  que establece que dos conjuntos $A$ y $B$ son equivalentes $A \cong B$  si y solo si existe una biyección entre ellos. Tomar el cociente por una relación de equivalencia es el acto del olvido.}. En olvidar los detalles específicos de los conjuntos de objetos está la génesis de la noción de número. La esencia del número 5 está en olvidar casi todo sobre las manzanas. Para los críticos del concepto de número y de las matemáticas en general, la pérdida es excesiva\footnote{Zerzan escribe: \emph{Number, like language, is always saying what it cannot say.  As the root of a certain kind of logic or method, mathematics is not merely a tool but a goal of scientific knowledge:  to be perfectly exact, perfectly self-consistent, and perfectly general.   Never mind that the world is inexact, interrelated, and specific, that no one has ever seen leaves, trees, clouds,animals, that are two the same, just as no two moments are identical.  As Dingle said, ``All that can come from the ultimate scientific anlysis of the material world is a set of numbers,'' reflecting upon the primacy of the concept of identity in math and its offspring, science.}\autocite{zerzan2009number}}.
+
+De la misma manera en que antes los actos de olvido permitían ver nuevos fenómenos en el paso de la física a la química o de la química a la biología, olvidar los detalles específicos de los conjuntos nos permite descubrir las leyes de la aritmética: la suma es conmutativa; la multiplicación es asociativa, etc. 
+
+El siguiente paso es olvidar que los números cuentan cosas e insistir en sus propiedades estructurales. No es claro qué cuenta el número real $e$ y mucho menos queda claro esto para el número complejo $\pi i$ pero, cuando extendemos todas las propiedades formales de expresiones del tipo $2^3$ (expresión en donde el 2 puede contar algún conjunto de objetos y el 3 cuenta cuántas veces se debe multiplicar consigo mismo de modo que $2^3$ mide el volumen de un cubo de lado 2) al ámbito de los números complejos, deberemos concluir con Euler\autocite{euler2012introduction} que $e^{\pi i} = -1$, hecho que se deduce de las propiedades estructurales de los números complejos. Al olvidar que los números deben contar, cosas ampliamos su poder expresivo de modo sorprendente. 
+	
+Un olvido más, abdicando por completo a los números nos quedamos con la estructura: $x+y=y+x$, $(xy)z=x(yz)$ y obtenemos de esta manera el concepto de anillo $R$. Aislar cada uno de estos conceptos, encontrarlo, descubrir cada una de estas definiciones es un acto altamente creativo: la definición de anillo como la conocemos se le escapó a Dedekind y a Hilbert; requirió la ardiente imaginación de la extraordinaria Emmy Noether\autocite{noether1921idealtheorie}. Y es que la definición de anillo sorprende: $R$ es un conjunto (la naturaleza de sus objetos es irrelevante, la olvidamos) con dos operaciones $+$ y $\times$ y un número muy pequeño de axiomas estructurales: una teoría de una enorme riqueza. Si bien los conjuntos clásicos de números enteros, racionales, reales o complejos son anillos, también lo son los conjuntos de funciones continuas de valores reales $R:=C^0(X;\mathbf{R})$ de cualquier espacio $X$.
+
+La primera mitad del siglo XX vio el ascenso del álgebra abstracta que, olvidando creativamente, conquistó primero a la topología y, después, al resto de la matemática. Por ejemplo, la definición de espacio de probabilidad de los años treinta, debida a Kolmogorov, es eminentemente algebraica. 
+
+Dado un objeto matemático (por ejemplo, un espacio vectorial $V$ sobre un campo $k$), hay dos modos opuestos de interpretarlo: un modo reduccionista y un modo holístico. 
+
+El modo reduccionista corresponde a la versión conjuntista en el paraíso de Cantor\footnote{La frase el ``paraíso de Cantor'' es de Hilbert. Aparece como referencia a la teoría de conjuntos por primera vez en su famoso artículo de 1926 titulado ``Über das Unendliche'' publicado en el \emph{Mathematische Annalen}. En efecto, hay muchas cosas muy especiales sobre la categoría de conjuntos brillantemente construida por Cantor.}, es decir, miramos a los elementos y codificamos la estructura del objeto dado en términos de la teoría de conjunto (por ejemplo, en el caso de $V$, consideramos dos operaciones conjuntistas $+:V\times V \to V$ y $\cdot: k\times V \to V$ junto con los axiomas que estos satisfacen). Esta versión reduccionista de la matemática es el paradigma dominante, es el modo como se enseña a pensar en los diversos objetos matemáticos a los estudiantes  desde la época de Hilbert. 
+
+En la versión conjuntista, un número es un elaboradísimo conjunto; por ejemplo, el número 5 es un enorme conjunto que contiene todos los conjuntos con cinco elementos. Para saber si un conjunto tiene 5 elementos, simplemente verifico si está en la lista. Este es un modo muy contraintuitivo de olvidar: recordarlo todo como Funes.
+
+El gran Nicolás de Cusa (1401-1464) enfrentó los problemas de la teología de su época usando sutiles ideas matemáticas, en especial el concepto del infinito. Sus contribuciones al estudio del infinito; como precursor del análisis infinitesimal, así como su cosmología (el universo es infinito, ni la tierra ni el sol son el centro del universo; la tierra está en movimiento; movimiento que no es un circulo perfecto) anticipan a Kepler y a Copérnico\autocite{davis2011renaissance} (recordemos que Copérnico nació casi una década después de la muerte de Nicolás). Pero en este ensayo nos interesa su asombrosa \emph{opus magnum}, \emph{La docta ignorancia}\autocite{cusa1984docta}, porque quiero sugerir que ahí también encontramos el germen de las ideas principales de la \emph{teoría de categorías}, que es el modo holístico de hacer matemáticas. Por ejemplo, ahí Nicolás escribe: ``Toda inquisición, pues, se da en una proporción comparativa fácil o difícil según algo infinito, en cuanto que lo infinito (por escapar a toda proporción) es desconocido. Sin embargo, la proporción, como indica conveniencia con algo único y, a la vez alteridad, no puede entenderse sin el número.'' Este párrafo indica que Nicolás concibe al infinito sólo en tanto este se relaciona (``proporción comparativa'') con los números ordinarios, quedando a un paso del concepto cantoriano de biyección. Para Nicolás, todo conocimiento de Dios o de cualquier otra cosa se relaciona a su objeto de estudio como un polígono regular se relaciona al círculo. El polígono es el resultado de olvidar muchos puntos del círculo y recordar solo $n$ de ellos igualmente espaciados.
+
+Yo guardo un afecto especial por Nicolás de Cusa pues, con su invento de las lentes cóncavas, resolvió elegantemente el problema de la miopía. 
+
+Nos dice Counet\autocite{counet2000mathematiques,celeyrette2011mathematics} que ``en Nicolás, uno no puede aislar las posibilidades `internas' de Dios de sus posibilidades en relación al mundo y Dios nunca es concebido por Nicolás de Cusa como una realidad en sí misma, independiente de las relaciones que otras cosas mantegan con Él [...]''. Cambiando la palabra ``Dios'' por ``espacio vectorial'', esto sugiere que una manera de entender un espacio vectorial $V$ es pensar en sus elementos internos (vectores) pero puede ser mejor una manera diferente de ver las cosas; fijar nuestra atención en todas las aplicaciones lineales $W\to V$ para todo $W$, que codifican laa relaciones de $V$ con otros espacios vectoriales $W$. Éste es el contenido del \emph{Lema de Yoneda}. Recordemos que la teoría de categorías (cuyo nombre fue tomado de Kant) fue fundada en 1945 por Eilenberg y Mac Lane y que, al inicio, parecía simplemente un lenguaje conveniente sin mucho contenido.
+
+Hay una hermosa leyenda sobre el siguiente peldaño en la escalera del olvido. La historia tiene lugar en la \emph{Gare du Nord} en París, en un café, desde luego. Es 1954 o 1955, no sabemos. Elvis Presley acaba de hacer su primera grabación comercial. Los personajes son: el elegante y sutil Noburu Yoneda y el exuberante Saunders Mac Lane con su inconfundible acento de Connecticut. Podemos imaginar a MacLane un poco enrojecido, agitado, muy emocionado. Yoneda debe tomar un tren (¿a dónde? Nunca lo sabremos). Pero Mac Lane aún no termina esta conversación: se sube al tren con Yoneda, porque quiere entender. Poco después, el tren está a punto de partir y Mac Lane baja apresuradamente: ha entendido. Posee, escribe y bautiza al ``lema de Yoneda''.
+
+Sea $\mathcal{C}$ (piensa en la categoría de todos los espacios vectoriales) una categoría y $V$ un objeto en ella (piensa en un espacio vectorial). Podemos definir entonces un funtor con valores en la categoría de todos los conjuntos $F_V\colon \mathcal{C} \to \mathbf{Conj}$ por medio de la expresión $F_V(W) = \mathrm{Hom}(W,V)$ (para la categoría de espacios vectoriales $\mathrm{Hom}(W,V)$ es el conjunto de todas las aplicaciones lineales de $W$ en $V$). 
+
+Lema de Yoneda: El funtor de la categoría $\mathcal{C}$ a la categoría de funtores de $\mathcal{C}^\mathrm{op}$ a $\mathbf{Conj}$, $Y:\mathcal{C} \to \mathbf{Conj}^{\mathcal{C}^\mathrm{op}}$ que manda $V$ a $Y(V):=F_V$ sumerge a $\mathcal{C}$ como una subcategoría de $\mathbf{Conj}^{\mathcal{C}^\mathrm{op}}$.
+
+
+
+En otras palabras $Y(V)$ parece haber olvidado todo sobre los elementos de $V$ y sin embargo lo recuerda todo: un gambito de dama, olvídalo todo y no habrás olvidado nada.
+
+Curiosamente, la demostración es casi tautológica. Hemos olvidado y podado tanto que no hay muchos caminos por dónde perderse.
+
+El lema de Yoneda ha sido muy influyente en el desarrollo de la topología y geometría algebraicas del siglo XXI. Se encuentra, por ejemplo, en el centro de la teoría de almiares (\emph{stacks}), que son bellas generalizaciones del concepto de variedad.
+
+El fértil olvido original y audaz seguirá siendo una de las maneras más sutiles de penetrar la esencia de las cosas que nos rodean en su infinita y abrumadora riqueza; solamente abdicando a esa riqueza, las podremos intimar. El destino de cada uno de nosotros es olvidarlo todo en última instancia. Quizá solamente así podremos comprender algo.
+
+
+
+
+
+%\begin{proof}  \end{proof}
+
+
+
+
+%\bibitem{wiki} \begin{verbatim} http://en.wikibooks.org/wiki/LaTeX \end{verbatim}
+
+
+
+%\end{thebibliography}
+
+
+
+\end{document}

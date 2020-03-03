@@ -1,0 +1,470 @@
+\documentclass[12pt]{article}
+% \usepackage[paperwidth=170mm, paperheight=230mm, total={125mm, 170mm}, top=29mm, left=23mm, includefoot]{geometry}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{cases}
+\usepackage{graphicx}
+% \usepackage{refcheck}
+
+\usepackage[total={6.8in,8.6in}, top=0.8in, left=0.8in, includefoot]{geometry}
+\renewcommand{\baselinestretch}{1.0}
+\AtBeginDocument{\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\theenumii}{\roman{enumii}}
+\renewcommand{\labelenumi}{\bf{\theenumi)}}
+\renewcommand{\labelenumii}{\theenumii .}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%   DEFINICIONES PROPIAS 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\decimalpoint
+\usepackage{xcolor}
+\usepackage{mdframed}
+\mdfsetup{topline=false, rightline=false,
+leftline=false, bottomline = false,
+skipabove=4pt,skipbelow=4pt, backgroundcolor=red!10}
+
+\newcommand{\dx}{\textrm{d}}
+\newcommand{\pa}{\partial}
+\newcommand{\R}{\mathrm{I\! R}}
+
+\newenvironment{narrow}[2]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parindent}}%
+\item[]}{\end{list}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+
+\title{Un paso hacia los agujeros negros, \\ generalización del colapso esférico}
+\author{Pablo Casta\~neda
+\\ \small Departamento Acad\'emico de Matem\'aticas, ITAM
+\\ \small R\a'io Hondo 1, Ciudad de M\'exico 01080, M\'exico
+\\ \small {\sf pablo.castaneda@itam.mx}}
+\date{}
+% \keywords{Leyes de conservaci\'on, casco convexo}
+
+\maketitle
+
+% \markright{{\scriptsize\sc Miscel\'anea Matem\'atica {\bf 57} (2013)
+% \thepage--\pageref{LastPage}} \hfill {\sc SMM}\ \hspace{30pt} }
+% \thispagestyle{myheadings}
+
+%\begin{abstract}
+%\noindent
+%\ams{34C37, 37C29, 37J45, 70H09}
+%\pacs{02.40.-k, 05.45.-a, 45.20.Jj}
+\vspace*{1ex}
+% Keywords:
+
+\begin{narrow}{1cm}{1cm}
+\noindent
+{\sc Resumen:\;} Este manuscrito está dedicado a la memoria de Antonmaria Minzoni, en el discutimos una de sus contribuciones al mundo de las matemáticas. Curiosamente, ésta no se encuentra en ninguna revista científica ni en sus propios libros, pues dentro de su aporte, también lo hizo para que una antigua tesis realmente lo fuera en el estricto sentido de su modo de ver. \\ \indent
+A finales del siglo pasado, un artículo cautivó la observación de Minzoni con un resultado numérico a un problema en relatividad general. Este resultado tiene una aproximación asintótica que aquí describimos. Para ello, primero construiremos parte de la historia y las ecuaciones que conforman a la Teoría de la Relatividad General de Einstein. Veremos cómo es posible el colapso de la materia en una configuración especial con la posibilidad de generar un agujero negro.
+\end{narrow}
+
+
+
+
+
+\section{Los pasos a través de la obscuridad de la noche}
+
+\begin{flushright}
+{\it Dios todavía no ha creado el mundo,\\s\'olo est\'a imagin\'andolo, como entre sue\~nos.\\Por eso el mundo es perfecto, pero confuso.}\\{\footnotesize{\sc Movimiento perpetuo, Augusto Monterroso.}}
+\end{flushright}
+
+\noindent
+La cosmología es probablemente una de las ciencias más apasionantes que tenemos. Esta se originó desde el primer momento en que la gente vio en la obscuridad de la noche la sutil \emph{regularidad} de los astros. Los dotaron de nombres con leyendas de héroes y deidades, a veces sólo con los nombres de los animales del entorno y de su cotidianidad. Es así que nos hemos preguntado desde tiempos remotos por nuestro lugar en el Mundo y el Universo. El enfoque ahora ha cambiado, la distinci\'on entre Universo y Mundo es casi tajante. En los or\'{\i}genes de la civilizaci\'on, esto no era as\'{\i}, eran el mismo, el Cosmos. La cosmolog\'{\i}a, generalmente, planteaba a la Tierra como el centro del Universo y el Mundo abarcaba desde las estrellas lejanas hasta los confines de cada inframundo.
+
+Para el hombre antiguo, al igual que para nosotros, las preguntas ?`de d\'onde venimos?, ?`qu\'e hacemos aqu\'{\i}?, ?`cu\'al es nuestro fin? --si hay alguno--, ?`hay alg\'un ser supremo que nos ha puesto en este tiempo y lugar?, al igual que toda la colecci\'on de inc\'ognitas imaginables fueron y son uno de los grandes ejes del pensamiento. Estas son las ideas que desembocaron en la Teoría General de la Relatividad de Einstein. La cual necesitó un largo recorrido pasando por exponentes que aún reverberan en nuestras mentes como Pitágoras, Aristóteles, Platón y Ptolemeo en la antigua Grecia, o Copérnico, Kepler, Tycho Brahe y Galileo quienes en el s.~XVI quiebran con los estigmas antiguos. Sólo después vinieron Newton y Maxwell caracterizando el inicio de la ciencia moderna. (Véase p.e. \cite{EI,Koe}.)
+
+
+\ \\
+\textbf{\large Preludio: la relatividad especial}
+
+\ \\
+Gracias a Isaac Newton y a James Clerk Maxwell, el siglo XIX se caracteriz\'o por los avances realizados en la mec\'anica cl\'asica y la electrodin\'amica. Los f\'{\i}sicos de esa \'epoca cre\'{\i}an que de ese momento en adelante solamente tratar\'{\i}an de encontrar y calibrar peque\~nos detalles de la teor\'{\i}a; así lo afirmaba Lord Kelvin, por ejemplo. Sabemos que no fue as\'{\i}, pero lo cierto es que estas dos ramas de la f\'{\i}sica aportaron la mayor\'{\i}a de los conceptos que utilizamos actualmente. Por ejemplo, de las ecuaciones de Maxwell es posible deducir la ecuaci\'on de onda, y ah\'{\i}, el c\'alculo en el vac\'{\i}o predice que la velocidad de la luz $c$ es $\sqrt{\mu_o\varepsilon_o}$ para $\mu_o$ y $\varepsilon_o$ la permeabilidad magn\'etica y la permitividad el\'ectrica del vacío. Estas cantidades pueden ser medidas y $c$ coincide con la velocidad de propagación de la luz.
+
+Sin embargo, un detalle entre estas teorías es su incompatibilidad. Predicen con exactitud fen\'omenos relacionados con cada una de ellas, pero a\'un as\'{\i}, no es posible por ejemplo hacer predicciones de lo que suceder\'{\i}a si se toman part\'{\i}culas cargadas en movimiento. Esta dificultad llev\'o a gente como Henri Poincar\'e a estudiar lo que pasar\'{\i}a de existir o no un l\'{\i}mite en la transmisi\'on de las se\~nales f\'{\i}sicas, véase por ejemplo \cite{Auf}.
+
+Es un gran siglo para la ciencia, ideas flu\'{\i}an por todos lados, la presencia m\'{\i}tica del \'eter con su ruido, la incomprensi\'on de la estructura espacio-temporal del mundo f\'{\i}sico y con ella las correcciones de una teor\'{\i}a con las manos en la otra. Esto sin embargo, no funcionaba, faltaba algo que diera un vuelco radical.
+
+Frente a dichas disonancias, los caminos que se tomaron fueron varios, así cient\'{\i}ficos de la \'epoca tomaban las ideas m\'as importantes de una u otra teor\'{\i}a para unificarlas. Uno de estos enfoques se basaba en las predicciones y confirmaciones tanto de la mec\'anica como de la electrodin\'amica. Las leyes de Maxwell, por ejemplo, predec\'{\i}an una velocidad de la luz constante en el vac\'{\i}o; as\'{\i}, de existir el \'eter, la mec\'anica cl\'asica mostrar\'{\i}a una correcci\'on en $c$ seg\'un la direcci\'on en la que se midiera. Tendríamos el movimiento relativo que tenemos en el \'eter y as\'{\i} el marco de referencia universal donde todo debe ser medido.
+
+En 1886 el f\'{\i}sico experimental polaco Albert Michelson y su amigo, el qu\'{\i}mico estadounidense Edward Morley intentaron medir la velocidad que tenemos con respecto al \'eter. Para ello, crearon los llamados {\it interfer\'ometros}. Primero aprovechando tanto la velocidad de rotaci\'on como la de traslaci\'on de la Tierra, midieron la velocidad de la luz en distintas direcciones; no se detect\'o ninguna variación. Tal vez los rayos de luz, al entrar en la atm\'osfera terrestre, adoptaban la misma velocidad que el medio pues la Tierra llevaba con ella una porci\'on del \'eter.
+
+Mejoraron el aparato con espejos semireflejantes, así, moviendo los espejos lograban que la se\~nal recorriera distancias iguales con movimientos distintos. El experimento result\'o ser, en aquella \'epoca, otra vez un fracaso: !`la velocidad de la luz es constante!
+
+Para responder cómo era posible una velocidad constante había teorías que alteraban el mítico éter o la geometría circundante. Entre otras rutas, el f\'{\i}sico ingl\'es Woldemar Voigt mencionó por primera vez en 1887 un parapeto geom\'etrico, en el cual se observa la ecuaci\'on de onda y sus cambios a trav\'es del tiempo en un conjunto espacio-temporal. Tal vez el espacio-tiempo de  Minkowski se origin\'o de esta invenci\'on y sólo apareció después de la formulaci\'on de la relatividad especial.
+
+La idea del espacio-tiempo tetradimensional de Hermann Minkowski no hubiera sido posible sin las transformaciones de Lorentz que remplazar\'{\i}an a las de Galileo al permitir la {\it invariancia del electromagnetismo maxwelliano}. Con el experimento de Michelson y Morley se mostraba que la velocidad de la luz era constante sin importar el movimiento del medio en el cual se mida. La dificultad aparece en la posibilidad de creer que esto puede suceder: \guillemotleft¿Qu\'e pasa si me muevo a una velocidad constante cercana a la de la luz? Es m\'as lento el rayo de luz que me alcanza en el movimiento que la velocidad del que me confronta cara a cara\guillemotright, pero \guillemotleft\/{\bf No}, el experimento muestra que esto no es as\'{\i}, !`su velocidad es igual no importa el \'angulo de incidencia!\guillemotright \footnote{El libro de Alan Lightman \textit{Los sueños de Einstein} muestra la dirección de estas y otras ideas al interpretar los recuerdos relativistas de los viajes oníricos de su creador.}
+
+Cambiemos un poco las ideas de Hendrik Antoon Lorentz para comprender esto. Si nos movemos y la velocidad de la luz es la misma no importa de donde provenga, entonces, algo está pasando con los par\'ametros que nos permiten medir la velocidad. Es decir, dado que $v = d/t$, la distancia o el tiempo en que medimos est\'an cambiando, siendo posible que se alteren simult\'aneamente. Cuando la luz viaja en una direcci\'on dada, entonces recorre una distancia $d_\text{\it luz} = ct$, si nosotros tenemos un movimiento en la misma direcci\'on a velocidad $v$, entonces recorreremos una distancia $d_{v} = vt$ en ese sentido. De este modo, el rayo (o el fot\'on) se alejaría de nosotros una distancia $d_\text{\it luz} - d_{v}$, que resulta ser distinto de $ct$. Es decir, la distancia tendr\'{\i}a que ser mayor, o dado que esa distancia es $(c-v)t$, ser\'{\i}a posible que el tiempo se dilatara. Lorentz encontr\'o que ambas cosas suced\'{\i}an formulando sus transformaciones como:
+\begin{eqnarray*}
+x' \;=\; \frac{x-vt}{\sqrt{1-\frac{v^2}{c^2}}}, \qquad\qquad
+t' \;=\; \frac{t-vx/c^2}{\sqrt{1-\frac{v^2}{c^2}}},
+\end{eqnarray*}
+donde el sistema primado es el que lleva la velocidad $v$, o de modo inverso, el no primado tiene la velocidad $-v$ respecto al primero. (Véase, p.e. \cite{Wa}.)
+
+Hay que notar que, cuando las velocidades con las que se mueven los marcos de referencia son muy peque\~nas, se obtiene una aproximaci\'on de las \textit{transformaciones de Galileo}.
+Lorentz no buscaba entender el cambio de las distancias o de los tiempos, no le importaba lo que ésto significaba físicamente, él quer\'{\i}a encontrar el cambio de coordenadas bajo el cual las leyes de Maxwell permanecer\'{\i}an invariantes. Aqu\'{\i} es donde Albert Einstein aparece.
+
+
+
+
+
+\ \\
+\textbf{\large El gran salto hacía la física moderna}
+
+\ \\
+La leyenda de Einstein comienza en 1905 cuando escribe tres artículos en los {\it Annalen der Physik}. Él era ``sólo'' perito de tercera clase en el departamento de patentes en la capital Suiza. Despu\'es de resolver los problemas t\'ecnicos aprende como tener tiempo para sus estudios y reflexiones sobre la f\'{\i}sica te\'orica. Así, de 1901 a 1905, sin acceso a bibliotecas y otras facilidades universitarias es que comienza a publicar sus artículos. Uno de estos artículos es un engrane revolucionador de la ciencia; con él entra en la escena de la f\'{\i}sica al interpretar las transformaciones de Lorentz en \textit{\"Uber die Elektrodynamik der Beweglen K\"orper} (es decir, {``Sobre la electrodin\'amica de los cuerpos en movimiento''}). Explica el concepto de lo que sucede con part\'{\i}culas cargadas en movimiento, e incluso lo que sucede al tomar velocidades próximas a la de la luz. Analiza el hecho de que la luz es un l\'{\i}mite en la transmisión de se\~nales, y por ello, el tiempo deja de ser absoluto, no es posible sincronizar relojes para dos sistemas de referencia distintos.
+
+El mismo Lorentz había publicado en 1892 {\it La th\'eorie \'electromagn\'etique de Maxwell et son application aux corps mouvants} (es decir, ``La teor\'{\i}a electromagn\'etica de Maxwell y sus aplicaciones a los cuerpos en movimiento''), que es fundamental para el art\'{\i}culo de Einstein. Sin embargo el vuelco en la f\'{\i}sica con la Teoría de la Relatividad Especial (TRE) solo se da con la interpretación de Einstein.
+
+Con esta nueva teor\'{\i}a, Einstein también dio un paso hacia los \textit{Gedankenexperimenten} o ``experimentos mentales''. Con ellos se generaron ideas y problemas que eran resolubles en la mente. Dio lugar a que se entendiera la pérdida del concepto de simultaneidad y c\'omo las cosas se ven en el tiempo. Por ejemplo, cuando un astrónomo observa a {\it Alpha Centauri} s\'olo entiende lo que pas\'o hace cuatro a\~nos. Se entendió así que la gente vive el pasado de su entorno. Los experimentos mentales tendrán mayor fuerza con la Teoría de la Relatividad General y con ella se hablará, al encontrar la equivalencia entre gravedad y aceleración, por ejemplo, de fenómenos como el \emph{efecto Döppler relativista} (o corrimiento al rojo) o como la \emph{deflexión de los rayos de luz}, que pudo ser medida al observar el eclipse solar del 29 de Mayo de 1919. 
+
+La novedosa TRE y sus resultados reflejaban correcciones m\'{\i}nimas. Un ejemplo es la relaci\'on relativista para el cambio de masa $m = {m_o}/{\sqrt{1 - v^2/c^2}}$, donde el denominador es próximo de uno, pues $|v| \ll c$. Un sat\'elite girando en torno a la Tierra con una velocidad de $8$\,km/s tiene una correcci\'on de dos a tres mil millon\'esimas partes por ciento de su peso. Además, la relatividad especial sólo resuelve los impases cuando los marcos de referencia tienen movimientos constantes y rectilíneos entre ellos. Aún así, se generó un nuevo objetivo para el trabajo de la gente de ciencia, la unificaci\'on. 
+
+En Francia, Poincar\'e comienza a estudiar la incompatibilidad de la TRE con la gravitaci\'on newtoniana. Se emprende el camino y es as\'{\i} como, en 1907, Einstein trata de tomar el concepto de la gravitaci\'on de la manera que ya lo ha hecho Pierre-Simon Laplace, en el intento de responder la pregunta de Poincar\'e. No se encuentran resultados satisfactorios de estos trabajos, pero le dan la idea o m\'as precisamente, la esperanza de encontrar la forma de resolver el problema con el perihelio de Mercurio, as\'{\i} como, la intuici\'on de que la luz ha de curvarse en presencia de gravedad y que el efecto D\"oppler ha de ser extendido de las ondas sonoras a la luz. En esta l\'{\i}nea se trabaja en las teor\'{\i}as escalares.
+
+Es curioso como las ideas vienen y van; por ejemplo, unos a\~nos antes, Carl Friedrich Gauss hab\'{\i}a intentado medir desde tres picos en los Alpes, los rayos de luz y su deflexión, para comprender la curvatura del Universo.  \'El se preguntaba porqu\'e el espacio ha de ser euclidiano. Claro, la respuesta reafirmar\'{\i}a sus dudas, pero su soluci\'on no ser\'{\i}a tan sencilla.
+
+Es tambi\'en en el a\~no de 1907 cuando se genera el principio de equivalencia en su forma general, el cual dice que para cualquier marco de referencia de Lorentz, sin importar dónde o cuándo, todas las leyes de la física --excluyendo las relativas a la gravitación-- deben ser invariantes y tomar su forma familiar en la TRE.
+
+Es una época de mucho trabajo y pocos resultados. En 1912, Einstein trabaja junto con Marcel Grossman e intentan ver c\'omo englobar el problema con base en la geometr\'{\i}a riemanniana: esto muestra que para incluir la gravitaci\'on en la TRE, hay que relacionar el tensor de energ\'{\i}a-momento del espacio-tiempo con el tensor m\'etrico de la curvatura, es decir, en sus propios s\'{\i}mbolos: $T_{\mu\nu}\to g_{\mu\nu}$. 
+
+En esta época, Einstein también trabaja con Gunnar Nordstr\"om en las teor\'{\i}as escalares. No se alcanza una teor\'{\i}a gravitatoria satisfactoria, pues las ecuaciones encontradas no se transforman de manera covariante, es decir, sin que cambien bajo transformaciones de coordenadas. Sin embargo, con estas f\'ormulas imprecisas Einstein es capaz de calcular y predecir cualitativamente algunos resultados.
+
+Trabaja con Adriaan Daniël Fokker en la misma teor\'{\i}a escalar buscando expresiones que relacionen la m\'etrica de Minkowski $\eta_{ij}$ con la m\'etrica del espacio-tiempo, $g_{ij}=\varphi(x)\eta_{ij}$. ¡Sin éxito! Vuelve a la idea que ten\'{\i}a con Grossman.
+
+Cuando comienza a trabajar con Wander Johannes deHaas en el efecto que lleva su nombre, los vagos resultados comienzan a desilusionar a Einstein. Sin embargo, en su visita a G\"ottingen, en 1915, lo escucha el gran matem\'atico David Hilbert quien se interesará por la gravitaci\'on y pone sus engranes a trabajar en el mismo problema.
+
+En Octubre le comentan a Einstein que Hilbert est\'a convencido de que la teor\'{\i}a que \'el y Grossman han creado, no tiene fundamentos ni esperanzas. Así, con reforzado entusiasmo, retoma el camino y manda semanalmente cuatro cartas con resultados a la Academia de Prusia. Del Jueves 4 de Noviembre de 1915, con su primera carta, al 25 de Noviembre, Einstein crea, transforma, va y vuelve para finalmente descartar totalmente todas sus afirmaciones en las tres cartas anteriores y publicar las ecuaciones correctas del campo gravitatorio:
+\begin{mdframed}[userdefinedwidth=5cm,align=center]
+\centering
+$R_{\mu\nu}=R\Big(T_{\mu\nu}-\frac{1}{2} T_{\mu\nu}\Big).$
+\end{mdframed}
+
+Parece ser que en el lapso entre las cartas a la Academia de Prusia, Einstein manten\'{\i}a contacto escrito con Hilbert. Se conocen cuatro cartas de uno para el otro con sus cuatro respuestas. El 14 de Noviembre, Hilbert comenta que ya sabe cu\'al es la inconsistencia y que de hecho la ha resuelto; invita a Einstein a ir a G\"ottingen. Se sabe que en este interludio de las cuatro cartas, Hilbert obtuvo las ecuaciones de campo, de hecho, es dos semanas antes de que Einstein mandara la cuarta carta a la Academia cuando Hilbert le dice a Einstein que tiene las ecuaciones correctas. Adem\'as, el 20 de Noviembre Hilbert presenta las ecuaciones precisas, deducidas de un principio variacional para un tensor de energ\'{\i}a particular. En su publicación, Hilbert se refiere a la materia de modo no muy físico, pero a\'un as\'{\i} le da cr\'edito a Einstein y presenta las cuatro comunicaciones con \'el. De todos modos, las ecuaciones de campo se le reconocen a Einstein, pues aunque a finales de 1915, los dos se pelean, es en Marzo de 1916 cuando Einstein publica finalmente el trabajo con el cual la Teor\'{\i}a de la Relatividad General es fraguada; ésta, gracias al trabajo de estas dos mentes geniales.
+
+Tal vez la historia podría acabar con un relato tanto asombroso como doloroso. En el año de la publicación de la TRG, el alemán Karl Schwarzschild regresa del frente de batalla, se encuentra con las ecuaciones de campo y da la primera soluci\'on a ellas. Poco despu\'es muere. Es bajo la solución de Schwarzschild que haremos más adelante una generalización del colapso esférico que sólo apareció a finales del siglo pasado por Matthew W. Choptuik, \cite{Cho93}.
+
+Es también, pocos años después de la publicaci\'on de la TRG, que Arthur Stanley Eddington parte al \'Africa para registrar la desviación de la luz bajo el campo gravitatorio del Sol, pues la teoría predice que en un eclipse total, algunas estrellas que se encuentran detrás de nuestro astro presentan pequeñas aberraciones de unos cuantos segundos de grado. La historia parece confusa, y no es del todo cierto que Eddington haya demostrado la deflexión de los rayos de luz con las fotograf\'{\i}as borrosas que obtuvo por culpa de las nubes. Sin embargo, es con ellas que la teoría se consolida.
+
+Otro hecho curioso, con un avance cient\'{\i}fico de gran importancia es la correcci\'on que realiza la relatividad general acerca de las predicciones de la orbita de Mercurio. La ley de la gravitaci\'on de Newton ten\'{\i}a errores medibles en el desplazamiento de este planeta, de hecho se hab\'{\i}a llegado a creer que exist\'{\i}a un planeta m\'as cercano al Sol que denominaron {\it Vulcano} que provocaba estas anomalías en el perihelio de Mercurio. Pero, al calcular relativistamente la trayectoria \'esta coincidían impresionantemente, con lo cual la relatividad gan\'o en favor de la mec\'anica cl\'asica.
+
+Otro tema que abordaremos en el desarrollo de este trabajo es la formaci\'on de los agujeros negros que la teor\'{\i}a predijo varias d\'ecadas antes de que los astr\'onomos los registraran en sus almanaques. Es as\'{\i} como la relatividad general se consolid\'o como el primer sistema que nos presentaba el mundo antes de que si quiera se hubiera registrado.
+Hay que ser justos tambi\'en en la historia, Laplace ya se hab\'{\i}a preguntado en 1796 si existir\'{\i}a algo tan masivo que ni la luz pudiera escapar. El alem\'an Johann Georg von Soldner, en 1801, hab\'{\i}a calculado la deflexi\'on newtoniana de un corp\'usculo de luz pasando cerca de una estrella. En 1920 John August Anderson dice que si el volumen del Sol se condensara en un radio de $1.47$\,km, entonces el \'{\i}ndice de refracci\'on ir\'{\i}a al infinito y ser\'{\i}a una {\it estrella negra}.
+
+Pero nos estamos adelantando un poco a nuestro relato, aunque hay que mencionar que la fama de los \textit{Gedankenexperimenten} es tal, que posiblemente sean el camino usado por un gran número de físicos teóricos de la actualidad. Esos, por cierto, en el ámbito de la ciencia son de alguna manera el regreso a la idea aristot\'elica, la cual dec\'{\i}a que puede llegarse a las conclusiones v\'alidas con base en el pensamiento puro. El cambio fundamental respecto a las ideas de los griegos, comparadas con la genialidad de la f\'{\i}sica en su aspecto m\'as te\'orico, es el hecho de que hoy en d\'{\i}a nos plantamos con los pies en la teor\'{\i}a y la mente en la imaginaci\'on.
+
+
+
+
+
+\section{Las ecuaciones de campo}
+
+\begin{mdframed}[userdefinedwidth=17.5cm,align=center]
+\smallskip \noindent
+\textit{\Large Achtung!\;} \\
+\begin{narrow}{1cm}{0.5cm}
+\noindent Esta sección probablemente es demasiado técnica. Pretendemos dar una pincelada de cómo se encuentran las \emph{Ecuaciones de Campo de Einstein} \eqref{eq:condensada}. Para ello es necesario entender un poco de álgebra tensorial y geometría riemanniana. Se puede saltar a la siguiente sección, pues lo importante será el desenlace de la ecuación \eqref{SW}.
+\smallskip
+\end{narrow}
+\end{mdframed}
+
+\medskip
+
+\noindent
+En la TRG se emplea usualmente la notación de las \textit{sumas de Einstein}. Esta se basa en el principio de que si $x = (x^1,\,x^2,\,x^3,\,x^4)^T$ es un vector \textit{covariante} (digamos ``columna'') y $y = (y_1,\,y_2,\,y_3,\,y_4)$ un vector \textit{contravariante} (digamos renglón), su producto interno $yx = \langle y^T,\,x\rangle = \sum_{i = 1}^4 y_ix^i$ tiene una cierta repetición de índices $i$ tanto en la suma como en los componentes de los vectores; además solo puede tomar valores de $1$ a $4$. Si convenimos que sólo podemos hacer sumas que cancelen un supraíndice (covariante) con un subíndice (contravariante), entonces, no hace falta el símbolo $\sum$; escribimos $x^iy_i = y_ix^i$.
+
+Esto es muy cómodo, pues podemos pensar a la m\'etrica $g_{ij}$ del espacio-tiempo como una métrica pseudo-riemanniana del tipo $(1,\,3)$ e interpretarla como una matriz en $\mathbb{R}^{4 \times 4}$ con tres direcciones características de eigenvalores positivos y una más con eigenvalor negativo. Así, la norma del vector $x$ bajo esta métrica es simplemente $\|x\|^2 = g_{ij}x^ix^j$ que usualmente se escribiría como $\|x\|^2 = \langle x,\,gx\rangle = \sum_{i,j = 1}^4 g_{ij}x^ix^j$; vemos que es mucho más compacto con la notación de Einstein. En este sentido, vamos entender el elemento de longitud identificado con el campo gravitacional como $\dx s^2 = g_{ij}\dx x^i\dx x^j$. Adem\'as, $\dx\Omega = \sqrt{-g}\dx^4x$ ser\'a el elemento de volumen donde $g = \det(g_{ij}) < 0$. (Véase, p.e. \cite{DFN,Wa}.)
+
+El tensor de curvatura se define rigurosamente como
+$$R_{iklm} \;=\; \frac{1}{2}\Bigg(\frac{\pa^2g_{im}}{\pa x^k\pa x^l}+\frac{\pa^2g_{kl}}{\pa x^i\pa x^m}-\frac{\pa^2g_{il}}{\pa x^k\pa x^m}-\frac{\pa^2g_{km}}{\pa x^i\pa x^l}\Bigg)+g_{np}(\Gamma^n_{kl}\Gamma^p_{im}-\Gamma^n_{km}\Gamma^p_{il}),$$
+donde $\Gamma^k_{ij}$ es la \textit{conexión} compatible con la m\'etrica y el tensor de Ricci es
+$$R_{ik} \;=\; R^q_{iqk} \;=\; g^{lm}R_{limk}, \qquad\text{o si se desea} \qquad R_{ik} \;=\; \frac{\pa\Gamma^l_{ik}}{\pa x^l}-\frac{\pa\Gamma^l_{il}}{\pa x^k}+\Gamma^l_{ik}\Gamma^m_{lm}-\Gamma^m_{il}\Gamma^l_{km},$$
+la curvatura escalar es $R=g^{ik}R_{ik}=g^{il}g^{km}R_{iklm}$.
+
+La ecuaci\'on de onda puede deducirse de modo variacional, \cite{Castaneda04}. Lo haremos de modo análogo para las ecuaciones de campo. En este caso definimos la acci\'on como $S = S_g+S_m$, donde la contribuci\'on del campo en ausencia de materia es $S_g$, llamada \textit{acci\'on de Hilbert}, est\'a dada por
+$$S_g \;=\; \int R\,\dx\Omega,$$
+la contribuci\'on dada por la materia es $S_m$. Ambas se toman en $\R^4$, para variaciones de las ecuaciones de Euler-Lagrange, vea el desarrollo en \cite{Castaneda04,DFN,Wa}.
+
+Se puede mostrar que la variaci\'on $\delta S_g/\delta g^{ij}$ est\'a dada por
+$$\frac{\delta S_g}{\delta g^{ij}} \;=\; 
+  \frac{\delta\int R\sqrt{-g}\,\dx^4x}{\delta g^{ij}} \;=\; \left(R_{ij}-\frac{1}{2} Rg_{ij}\right)\sqrt{-g},
+  \qquad \text{es decir,} \qquad
+  \delta S_g \;=\; \int \left(R_{ij}-\frac{1}{2} Rg_{ij}\right)\,\delta g^{ij}\sqrt{-g}\,\dx^4x.$$
+Generalmente ésta se normaliza como
+$$\delta S_g \;=\; \frac{c^3}{16\pi G}\int \left(R_{ik}-\frac{1}{2} R\,g_{ik}\right)\,\delta g^{ik}\sqrt{-g}\,\dx^4x.$$
+
+Para la contribución de la acci\'on de la materia, tomamos $S_m = \frac{1}{c}\int\Lambda\sqrt{-g}\,\dx^4x$, con $\Lambda$ una funci\'on determinada por ella. Obtenemos an\'alogamente $\delta S_m/\delta g^{ik}$:
+\begin{equation}
+\label{masa}
+\frac{\Lambda}{\sqrt{-g}}\,\frac{\delta S_m}{\delta g^{ik}} \;=\;
+R_{ik}-\frac{1}{2} R\,g_{ik} \;=\; 
+\frac{-16\pi G}{c^4}\,\frac{\delta S_g}{\delta g^{ik}}\,\frac{1}{\sqrt{-g}}.
+\end{equation}
+Estas ecuaciones suman como la variaci\'on total.
+
+El tensor de energ\'{\i}a momento $T_{ik}$ es equivalente a $-(2/c\sqrt{-g})(\delta S_m/\delta g^{ik})$, así, tomando el resultado directo de las ecuaciones de Euler-Lagrange se obtiene:
+$$\frac{1}{\sqrt{-g}}\,\frac{\delta S_m}{\delta g^{ik}} \;=\;
+\frac{1}{\sqrt{-g}}\,\frac{\pa}{\pa g^{ik}}(\sqrt{-g}\,\Lambda)-\frac{\pa}{\pa x^l}\,\frac{\pa(\sqrt{-g}\,\Lambda)}{\pa(g^{ik}/\delta x^l)},$$
+equivalente a tomar la métrica $g^{ik}$ como la de Minkowski, es decir, el equivalente de la métrica euclidiana para el espacio-tiempo, $g_{ij}$ es la métrica pseudo-riemanniana canónica.
+
+Con la forma expresada para el tensor $T_{ik}$ podemos escribir la ecuaci\'on (\ref{masa}) como
+\begin{equation}
+\label{eq:condensada}
+R_{ik}-\frac{1}{2} Rg_{ik} \;=\; \frac{8\pi G}{c^4}T_{ik},
+\quad\text{ o análogamente }\quad
+R_{ik} \;=\; \frac{8\pi G}{c^4}\left(T_{ik}-\frac{1}{2} g_{ik}T\right),
+\end{equation}
+después de contraer los índices $R-2R=(8\pi G/c^4)T$ y al recordar que $R=g^{ik}R_{ik}$ es satisfecho.
+
+La ecuación a la izquierda en \eqref{eq:condensada} tiene una belleza intrínseca digna de ser mencionada, su lado izquierdo posee la parte geométrica del campo mientras que su contra parte derecha se tiene la contribución física con la energía, es así como el signo de igual es la comunión entre matemática y fenomenología. Por otro lado, observamos que si tomamos un espacio sin energ\'{\i}a ni momento, es decir, $T_{ik}=0$, entonces $R_{ik}=0$. Si $R_{ik}\equiv 0$ para un espacio vac\'{\i}o, entonces es claro que la m\'etrica de Minkowski es una soluci\'on.
+
+
+\section{La soluci\'on de Schwarzschild}
+
+\noindent
+El problema resuelto por Schwarzschild unos meses despu\'es de la publicaci\'on de las ecuaciones de campo en el vac\'{\i}o de Einstein es sin lugar a dudas una de las soluciones exactas de las ecuaciones de Einstein m\'as importantes.
+Describe el campo exterior de un cuerpo esf\'erico, corrigiendo de esta manera, los peque\~nos errores que produce la teor\'{\i}a newtoniana sobre el movimiento planetario en nuestro sistema solar. La deflexi\'on de los rayos de luz, el corrimiento al rojo, as\'{\i} como, los efectos de enlongamiento del tiempo son s\'olo unas de las implicaciones del descubrimiento de esta soluci\'on.
+
+Una de sus predicciones con mayor relevancia se refiere a la posibilidad de que una estrella implote, colaps\'andose en una singularidad; formando un \textit{agujero negro}. estos, por causa de la \textit{Conjetura de la Censura Cósmica} no podrán ser vistos en su interior, sin embargo, la historia reciente es prometedora.\footnote{El 10 de Abril de 2019 se publicó la primera fotografía de un agujero negro. Seguimos sin poder observar el interior de su horizonte, pero ahora tenemos datos sobre este coloso en la galaxia Meisser87, en la constelación de Virgo: es tan masivo como $6.5 \times 10^9$ veces la masa del Sol. Observarlo no ha sido fácil, se han empleado ocho radiotelescopios en lugares distantes entre sí como son la Antártida, Chile, España y México que funcionan como uno sólo, volviendo así al planeta en un gran radiotelescopio. La verdad es que ya se tenían observaciones y datos desde 2017, pero al estar a $50$ millones de años luz, el equipo involucrado quería estar seguro de su descubrimiento.}
+
+En fin, tomemos un espacio tiempo tetradimensional $M^4$ con m\'etrica $g$, considerando una simetr\'{\i}a especial: todos los vectores del campo vectorial ser\'an del tipo tiempo, es decir, $\langle v,\,v\rangle < 0$; y toda foliaci\'on en la direcci\'on temporal ser\'a una isometr\'{\i}a, esto quiere decir que el espacio en principio es el mismo a trav\'es del tiempo. (Esto se conoce como un campo de Killing tipo temporal.)
+
+Simplificaremos la notación de las sumas de Einstein tomando la métrica como una matriz $\mathbb{R}^{4 \times 4}$
+$$g_{ij}=\left(\begin{array}{cc}
+     -v^2 & 0 \\
+       0  & h_{\mu\nu}
+  \end{array}\right),$$
+donde los vectores en el espacio-tiempo son eventos $E = [t,\, x,\, y,\, z]^T$ y así, el elemento de distancia será $\dx s^2 = (\dx E)^T g_{ij} \dx E$, para $\dx E = [\dx t,\, \dx x,\, \dx y,\, \dx z]^T$. Además, suponiendo una masa puntual en el origen, nos resulta útil utilizar coordenadas del sistema esférico, así
+\begin{equation}
+\label{SW}
+\dx s^2=-f(r)\dx t^2 + h(r)\dx r^2 + r^2(\dx \theta^2 + \sen^2\theta \, \dx\phi^2),
+\end{equation}
+de modo tal que vemos a la métrica como
+$$g_{ij}=\left(\begin{array}{cccc}
+     -f(r) &  0   &  0  & 0 \\
+       0   & h(r) &  0  & 0 \\
+       0   &  0   & r^2 & 0 \\
+       0   &  0   &  0  & r^2\sen^2\theta
+  \end{array}\right),$$
+lo cual, tendrá un significado sencillo de entender, manejar y resolver. Hay que notar que el jacobiano  $r^2(\dx\theta^2 + \sen^2\theta \, \dx\phi^2)$ es tambi\'en la longitud de arco esf\'erico.
+
+Estas simetrías simplificaron el problema de encontrar diez funciones ($v$ y cada componente $h_{\mu\nu}$) en tres variables, a solamente encontrar $f(r)$ y $h(r)$; dos funciones en una sola variable. 
+
+Como queremos comprender la geometr\'{\i}a del espacio-tiempo en presencia de una masa $M$ localizada en el origen de nuestro sistema, la soluci\'on ser\'a la m\'etrica que emplearemos cuando ``acomodamos'' un cuerpo masivo en el origen de nuestro sistema de coordenadas. Esperaremos que el espacio-tiempo sea, por lo tanto, ``plano'' lejos del origen. Es por ello que tomaremos (valga el abuso de notaci\'on) $f(\infty) = h(\infty) = 1$.
+
+Hemos mencionado que tanto las velocidades como las aceleraciones producen un cambio en la medici\'on del tiempo, as\'{\i}, un pulso emitido a una distancia $r_1$ ser\'a observada con un intervalo distinto en $r_2$, que ser\'a modificado por el factor
+  $$\left[1 - \Big( \frac{M}{r_1} - \frac{M}{r_2} \Big) \right].$$
+De esta forma, si tomamos $r_1$ como $r$ y $r_2\to\infty$, cada reloj con el que medimos el tiempo est\'a influenciado por un factor de $[1-M/r]$. Utilizando el rec\'{\i}proco para acelerar cada reloj con este factor, el tiempo se medir\'a igual en todos los {\it eventos} del espacio-tiempo, \'esto, sin importar que estos tengan las mismas coordenadas $\theta$ y $\phi$.
+
+Con lo cual, al acelerar los ``relojes'', la diferencia del tiempo $\Delta t$ ser\'a una menor $\Delta\tau$, la cual est\'a dada en t\'erminos de la diferencia original
+  $$\Delta\tau = \left( 1 - \frac{M}{r} \right)\Delta t,$$
+o preferentemente
+  $$\Delta\tau^2=\left( 1 - \frac{2M}{r} + \frac{M^2}{r^2} \right) \Delta t^2.$$
+
+Si olvidamos el t\'ermino cuadr\'atico y observamos que $\Delta r = \Delta\theta = \Delta\phi = 0$ en el transcurso del tiempo, podemos identificar $f(r)$ en la m\'etrica (\ref{SW}) como
+  $$f(r)=1-\frac{2M}{r}.$$
+Tomando la curvatura gaussiana $k(r)$ para las componentes radial y temporal, tenemos que $k(r)=f(r)h(r)$ es constante para cada radio, as\'{\i}, reescalando tenemos que $h(r)=f^{-1}(r)$. De este modo obtenemos la \textit{solución de Schwarzschild}:
+\begin{equation}
+\label{Schw}
+\dx s^2 = -\left( 1 - \frac{2M}{r}\right) \dx t^2 + \left( 1 - \frac{2M}{r} \right)^{-1} \dx r^2 + r^2(\dx \theta^2 + \sen^2\theta \, \dx\phi^2),
+\end{equation}
+que nos dice cómo varía la longitud de arco según la posición de un evento.
+
+Observamos que hay un cambio de signo cuando $r$ está por arriba o por abajo de $2M$; este es el \emph{radio de Schwarzschild} y cuando la masa de un objeto está confinada dentro de este radio, ella no puede escapar, de hecho, se puede mostrar que ni si quiera la luz puede hacerlo. Por ello, se le conoce como el \emph{horizonte} del agujero negro y es así como éste define un ``escudo obscuro'' que no permitirá ver su interior.
+
+
+
+\ \\
+\textbf{\large Consecuencias fundamentales de la soluci\'on de Schwarzschild}
+
+\ \\
+El an\'alisis del comportamiento de los cuerpos de prueba y los rayos de luz en la regi\'on exterior de la soluci\'on de Schwarzschild ($r > 2M$) es de gran importancia, pues es el lugar geométrico de aquello que se encuentra fuera del horizonte. Podremos describir cómo reaccionan objetos pequeños en regiones como las dadas cerca de las estrellas con altas densidades, as\'{\i} como, de objetos totalmente colapsados.
+
+Los resultados para una regi\'on donde el campo es d\'ebil ($r\gg 2M$) serán la analog\'{\i}a para sectores exteriores de cuerpos ordinarios como nuestro Sol, cuyo radio de Schwarzschild es de solamente $3$\,km. Dentro de la amplia gama de fenómenos que pueden describirse con ayuda de \eqref{Schw}, tenemos tres muy importantes.
+
+
+
+
+\ \\
+\textit{El efecto Döppler relativista.\quad}
+Este efecto llamado también {\it corrimiento al rojo}, relaciona las frecuencias de emisión $\omega_1$ y recepción $\omega_2$ de una señal luminosa desde un objeto en una órbita $O_1$ hacia una órbita $O_2$ con distancias $r_1 > r_2$ respectivamente y en relación al origen. Si ambos objetos se mueven a una velocidad unitaria, esta razón esta dada por $\omega_1/\omega_2 = [(1 - 2M/r_2)/(1 - 2M/r_1)]^{1/2}$, implicando que $\omega_2 < \omega_1$. Es decir, la luz en $O_2$ es más próxima del rojo que en $O_1$.
+
+De hecho, este fenómeno lo podemos ver todos los días, pues explica porqué los atardeceres son ligeramente más rojizos que los amaneceres; nos alejamos del Sol en lugar de aproximarnos.
+
+
+
+\ \\
+\textit{Precesión del perihelio de Mercurio.\quad}
+Al observar la soluci\'on de Schwarzschild \eqref{Schw} es f\'acil notar la simetr\'{\i}a que existe en torno al ``plano ecuatorial'' $\theta=\pi/2$. Por lo tanto, una geod\'esica que comienza en este plano debe de mantenerse en \'el. Tomando en cuenta adem\'as la isometr\'{\i}a rotacional de la soluci\'on, el an\'alisis se simplifica en una dimensión.
+
+A partir de la ecuación diferencia ordinaria asociada, notamos que la distancia $r$ de un objeto con momento angular $L$ decrece para $r < R_-$ y para $r > R_-$ la órbita converge a un radio $R_+$, donde
+$$R_{\pm} = \frac{L^2 \pm \sqrt{L^4 - 12 M^2 L^2}}{2M} = \frac{L^2 \pm L^2\,\sqrt{1 - 12M^2/L^2}}{2M}.$$
+Es decir, con $L^2 < 12M^2$ no existen estos equilibrios y toda órbita es tragada hacia el origen del sistema. Un simple cálculo muestra que $R_- \in (3M,\,6M)$ y $R_+ > 6M$, es decir que no hay órbitas estables para $r \leq 6M$. En el caso de nuestro Sol tenemos que $6M_{\odot}\cong 8.8598\times 10^5$\,cm (en unidades relativistas, es decir, tomando $c=1$). La gravitación clásica evalúa la distancia del Sol a Vulcano como menor, lo cual mostró que la existencia de este planeta fue solamente un sueño.
+
+
+
+\ \\
+\textit{La deflexi\'on de los rayos de luz.\quad}
+Tomando ahora objetos de prueba como rayos de luz y no cuerpos con masa, encontramos los equilibrios cuando $\dx V/\dx r = 0$, donde $V = L^2(r - 2M)/r^3$. Estos equilibrios existen cuando ${L^2[3M-r]}/{r^4} = 0$, es decir, existe un único radio en $r = 3M$ que es máximo y por lo tanto inestable. Con ello sabemos que la relatividad general predice \'orbitas inestables de fotones en este radio. F\'{\i}sicamente tenemos que la gravedad tiene efectos significativos en los rayos de luz a distancia $3M$ de nuestro origen en el sistema de coordenadas de Schwarzschild. Esta es la teoría que sustenta las mediciones de Eddington en 1919 que ayudaron a consolidar la TRG.
+
+%\caption{Una de las fotografías tomadas del eclipse de 1919 durante la expedición de Eddington, la cual confirmó las predicciones de Albert Einstein.}
+
+
+
+
+
+\section{Generalización del colapso esférico}
+
+\noindent
+Finalizamos este trabajo con el desarrollo que le debemos a Antonmaria Minzoni. Pocos meses antes de darme su manuscrito se había negado a ser sinodal de mi tesis de licenciatura \cite{Castaneda04}, pues no aportaba ningún resultado nuevo y una ``tesis'' debía de hacerlo. Aún así dijo que el trabajo era sobresaliente y que cubriría muchos modos de titularse en física, pero que en matemáticas se requería de una TESIS. Es así como él hizo de ese trabajo una tesis en el sentido estricto. Sin embargo, abandonó su resultado ahí y nunca terminé de entender el porqué. Tal vez podemos citar \cite{CetA} donde un poco de su esencia en este sentido existe.
+
+Es curioso que las ecuaciones de Schwarzschild tienen dos maneras distintas de escribirse según se tome $f(r)$ o $h(r)$ en \eqref{SW} como la función ``original'' y la otra como su recíproco. En este trabajo $f(r)$ es la función dominante y los resultados más adelante siguen de manera natural. Minzoni acostumbraba usar $h(r)$ como la función dominante, y su análisis asintótico es considerablemente más complejo, por ello él llevaba un doble mérito.
+
+Tomaremos nuevamente las ecuaciones de Einstein en el vacío y pondremos en el origen del espacio-tiempo una cáscara esférica de masa $M$ y radio $R(t)$, suponiendo que este radio puede variar con el tiempo. Dada la simetría esférica obtendremos la métrica \eqref{SW}, donde de igual forma, se encuentra que $h(r)$ es el recíproco de $f(r)$ y ésta debe ser nuevamente $f(r) = 1 - {C}/{r}$, con $C$ una constate. Hemos cambiado las condiciones del problema, así esta constante debe ser distinta.
+
+Para radios $r > R(t)$, el espacio fuera de la cáscara, tenemos el límite usual en el que la masa del objeto la podemos tomar puntualmente en el origen; recobramos la solución de Schwarzschild \eqref{Schw}, es decir, $f(r) = 1 - {2M}/{r}$, cuando $r > R(t)$.
+
+En el interior de la cáscara tenemos un nuevo problema. Como en mecánica clásica, se puede mostrar que el objeto de prueba en el interior no siente la masa circundante; es ``jalado'' en todas las direcciones por igual. El espacio es ``plano'' y su geometría es la de Minkowski; $f(r) = 1$, para $r < R(t)$.
+
+Bien, parece que tenemos el problema resuelto,
+$$ \dx s^2 \;=\; -f(r)\,\dx t^2 + \frac{\dx r^2}{f(r)} + r^2(\dx\theta^2 + \sen^2\theta\,\dx\phi^2)
+\qquad\text{con}\qquad
+f(r) \;=\;
+\begin{cases}
+    1,             &  r < R(t) \\
+    1 - {2M}/{r},  &  r > R(t)
+\end{cases}. $$
+Sin embargo, de este modo la métrica es discontinua en $r = R(t)$. Necesitamos una métrica para la superficie de la cáscara, y ésta debe ser de la forma
+$$ \dx s^2 \;=\; -N(t)\,\dx t^2 + \frac{\dx r^2}{N(t)} + r^2(\dx\theta^2 + \sen^2\theta\,\dx\phi^2), $$
+con $N(t) = N(t;\,R(t))$ una función que dependa del radio de la cáscara al tiempo $t$. Definimos $f_i(r,\,t) = 1$ y $f_e(r,\,t) = 1 - 2M/r$ para el interior y el exterior de la cáscara, respectivamente. Esperamos con $N(t)$ unir ambas soluciones de manera continua.
+
+Este pegado necesita una cáscara con un cierto grosor, digamos $2\omega$. Conservamos las notaciones $f_i(r,\,t)$ y $f_e(r,\,t)$ para $r < R(t) - \omega$ y $r > R(t) + \omega$, respectivamente.
+
+Dado que $f(r) = 1 - C/r$ debe cumplirse, observamos al graficar este último sumando para toda $r$ que cualitativamente, si permitimos que $C$ dependa de $r$ para ``pegar'' continuamente las dos soluciones en el interior y en el exterior de la cáscara, obtenemos la Figura.~\ref{fig:pegado}. Sólo nos falta entonces comprender cómo es el término $C/r$ para el intervalo $(R(t) - \omega, \, R(t) + \omega)$.
+
+Se ha llegado a una ecuación análoga a la que se obtiene en el desarrollo de la solución de Schwarzschild, ahora tomaremos esa como
+\begin{equation}
+\label{eq:omitir}
+f'(r) - \frac{1}{r}(1 - f(r)) + H_{cm}(r,\,t) \;=\; 0,
+\end{equation}
+donde el responsable por la presencia de materia en la cáscara será el campo de materia $H_{cm}$. De los principios físicos, lo escribimos como
+$$ H_{cm}(r,\,t) \;=\; 4\pi r\frac{Q(t)}{r^2} \, H\!\left(\frac{r - R(t)}{\omega} \right), $$
+donde $Q(t)/r^2$ está relacionado con la densidad de materia en la cáscara, $4\pi rH$ está relacionado con la superficie de la esfera y $H$ es una función que está normalizada por conveniencia con el grosor, veremos luego cómo se comportan estas expresiones. La solución de esta ecuación es analizada por Choptuik \cite{Cho93} de modo numérico, aquí haremos el análisis asintótico de Minzoni y es por ello que despreciaremos el término $-(1 - f(r))/r$ para evitar el cálculo numérico; veremos más adelante que no perdemos consistencia en la solución. 
+
+Queremos resolver entonces
+\begin{equation*}
+f'(r) \;=\; -4\pi r\frac{Q(t)}{r^2} \, H\!\left(\frac{r - R(t)}{\omega} \right), \qquad\text{para}\qquad r \in (R(t) - \omega,\, R(t) + \omega). 
+\end{equation*}
+Integrando de $R(t) - \omega$ a $r$, del Teorema fundamental del cálculo, tenemos
+$$ f(r) - f\left( R(t) - \omega \right) \;=\; -4\pi Q(t) \int_{R(t) - \omega}^r \frac{1}{\eta} \, H\!\left(\frac{\eta - R(t)}{\omega} \right) \, \dx\eta.$$
+Recordando que queremos la métrica de Minkowski para $r$ pequeño, tomamos $f\left( R(t) - \omega \right) = 1$. Para simplificar la integral tomaremos un \textit{ansatz} al aproximar
+$$ H\!\left(\frac{\eta - R(t)}{\omega} \right) \;=\; \text{sech}^2\!\left(\frac{\eta - R(t)}{\omega} \right), $$
+que es una función apropiada pues estamos concentrando la aportación de la materia de la cáscara alrededor de $R(t)$. Por otra parte, la elección de esta forma para $H$ tiene justificativas sólidas al considerar la ecuación de \textit{sine-Gordon}. (Algunos resultados de Minzoni en el área de esta ecuación se pueden  ver en \cite{CIM09,MS97,MSW04}.)
+
+Calculando la integral, tenemos
+\begin{eqnarray*}
+ \int_{R(t) - \omega}^r \frac{1}{\eta} \, H\!\left(\frac{\eta - R(t)}{\omega} \right) \, \dx\eta 
+ &=&
+ \int_{R(t) - \omega}^r \frac{1}{\eta} \, \text{sech}^2\!\left(\frac{\eta - R(t)}{\omega} \right) \, \dx\eta
+ \;\approx\; \frac{1}{R(t)} \int_0^r \text{sech}^2\!\left(\frac{\eta - R(t)}{\omega} \right) \dx\eta \\
+ &\!=\!& \frac{1}{R(t)} \left[\omega \tanh\!\left(\frac{\eta - R(t)}{\omega} \right) \right]_0^r
+ \;=\; \frac{\omega}{R(t)} \left[\tanh\!\left(\frac{r - R(t)}{\omega}\right) -\tanh\!\left(\!\frac{-R(t)}{\omega} \right) \right],
+\end{eqnarray*}
+pues en la segunda aproximación hemos tomado que $\omega$ es pequeño y como estamos integrando al rededor de $R(t)$, podemos intercambiar el factor $1/\eta$ por $1/R(t)$. Para compensar un poco esta pérdida, tomamos la integral desde cero hasta $r$. De esta forma, tenemos
+$$ f(r) \;=\; 1 - \frac{4\pi\omega Q(t)}{R(t)} \left[\tanh\!\left(\frac{\eta - R(t)}{\omega}\right) + \tanh\!\left(\!\frac{R(t)}{\omega} \right) \right]
+\quad\text{ y }\quad
+f\left( R(t) \right) \;=\; 1 - 4\pi Q(t) \left[\frac{\omega}{R(t)} \tanh\!\left(\frac{R(t)}{\omega} \right) \right]. $$
+Notamos de la segunda igualdad y la continuidad que $h(r) = f^{-1}(r)$ está bien definido cuando $4 \pi \omega Q(t)$ es pequeño, pues, cuando $R(t) \to 0$, el factor $R^{-1}(t)\tanh(R(t)/\omega)$ tiene un límite finito.
+
+Ahora veamos que omitir el término del medio de \eqref{eq:omitir} era posible, pues este es realmente despreciable:
+$$ \frac{1}{r}\left(1 - f(r)\right) \;=\; \frac{4\pi\omega Q(t)}{r\,R(t)} \left[\tanh\!\left(\frac{r - R(t)}{\omega}\right) + \tanh\!\left(\frac{R(t)}{\omega}\right) \right]. $$
+Bien, como el valor del interior del corchete siempre es menor a dos, $\omega$ logra que todo el término sea muy pequeño. Sin embargo, si $r \to 0$, podríamos tener problemas, cuyo caso no sucede si $r < R(t) - \omega$, pues es la solución de Minkowski; así el término es cero. Cuando es $R(t)$ quién tiende a cero, como dijimos en el párrafo anterior, no produce ningún problema pues, al ser $h(r)$ no singular, el término $1 - f(r)$ tendrá un límite finito que sigue siendo controlado por $\omega$.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width = 12cm]{colapso.pdf}
+    \caption{Función radial para la métrica en la cáscara de polvo.}
+  \end{center}
+  \label{fig:pegado}
+\end{figure}
+
+Caractericemos entonces $Q(t)$ y comprendamos el comportamiento de la solución. Es decir, si $f(r)$ es cero para algún radio, la razón de la masa $C/r$ en la Fig.~\ref{fig:pegado} pasará el \textit{umbral} al ser mayor a uno; tendremos así, un horizonte (nos preocuparemos únicamente del exterior). Tenemos que comprender que nuestras aproximaciones nos alejan en el sentido \emph{cuantitativo} de la solución real a nuestro problema, sin embargo, siguen siendo fieles en el ámbito \emph{cualitativo}. Es precisamente éste el análisis que haremos en nuestra métrica para la cáscara esférica.
+
+El umbral dará origen a lo que se conoce como una \textit{superficie atrapada} (véase \cite{Castaneda04}). Si el término $4\pi Q(t)\left[\omega\,\tanh\left(R(t)/\omega\right)\right]/R(t)$ es uno, tenemos que la función $f(r)$ es nula y por lo tanto $h(r) = f^{-1}(r)$ está indeterminada: la métrica no tiene sentido en esta región del espacio-tiempo. Bien, veamos que según la construcción de $f(r)$ tendremos una cúspide en $r = R(t)$, no exactamente la función suave que trazamos en la Fig.~\ref{fig:pegado}. De esta forma, tenemos varios casos para nuestra función:
+\begin{itemize}
+ \item[$\bullet$] En el caso en el que nunca se llega al umbral, tendremos entonces a la cáscara encogiéndose por la gravedad. Siendo ésta ``esfera'' visible para todo observador existir.
+ 
+ \item[$\bullet$] El caso en que la cúspide es el único punto que toca el umbral, se complica un poco la situación: tendríamos una superficie atrapada, pero dado que nuestra solución es solamente confiable a modo cualitativo, en este caso, no se sabe dónde realmente ocurre. Debemos considerar que se está en el caso anterior o posterior.
+ 
+ \item[$\bullet$] El último caso sería el más viable en caso de tener una superficie atrapada, éste es cuando dicho término es mayor a uno. Hay dos intersecciones con el umbral, una comprendida para $r \in \left(R(t) - \omega,\, R(t)\right)$ y la otra para radios mayores a $R(t)$. La primera, además de encontrarse en el interior de la cáscara y no ser visible, plantea algunas problemáticas cosmológicas.
+ 
+ Nos centramos en la segunda intersección. Como para $r > R(t) + \omega$ se cumple que tanto la función que hemos construido como la solución de Schwarzschild tienen el mismo valor, entonces, tenemos una superficie que será atrapada en un tiempo futuro. Desde el exterior de la cáscara estaremos en el caso usual del colapso esférico, observando la condensación de nuestro objeto de prueba, este ``astro hueco''.
+\end{itemize}
+Recordando las discusiones al respecto, necesitamos que la masa sea suficientemente grande en comparación con el radio. Si tuviéramos una masa como la del Sol, sería indispensable que $R(t) + \omega$ en el colapso alcanzara una magnitud menor a 3km. Lo cual implica, de hecho, una densidad en la cáscara muy elevada.
+
+Así, para la intersección con el umbral fuera del radio $R(t)$ tenemos dos nuevas conclusiones. Si ésta se encuentra en el intervalo $\left(R(t),\,R(t) + \omega\right)$ tenemos en analogía al segundo punto, una superficie atrapada, el colapso de la cual nos llevará a la formación de un agujero negro. Sin embargo, es posible que dicha intersección se encuentre inicialmente fuera de la cáscara, logrando de esta manera, no sólo que encontremos inicialmente una superficie atrapada, sino de hecho, un agujero negro.
+
+Esta generalización es un bonito ejercicio sobre el colapso esférico usual, \cite{Wa}. Se puede calcular, como hemos dicho, el radio de Schwarzschild y saber en qué momento el umbral sobrepasa la cáscara en el colapso. Sin embargo, es interesante en muchos otros sentidos. El colapso garantiza que toda la materia se condensará en un punto, este artefacto matemático no resulta muy fácil de entender físicamente; resulta difícil entender en el \emph{Big bang} a toda la materia del Universo en un único punto. Tal vez la necesidad de $\omega$ sea un camino para mostrar que la densidad de la materia tiene un límite así como existen muchos otros en la naturaleza: la velocidad de la luz $c$, la constante de Planck $\hbar$ o el cero absoluto en grados Kelvin, son sólo algunos ejemplos.
+
+Parecía que, entender cómo el colapso realmente ocurre, sería una pregunta sin solución. Ahora, ésto ha cambiado y se propone actualmente que podemos observar el horizonte de los agujeros negros y con ellos entender parte de lo que ocurre en su interior. Nuevos caminos comienzan, los cuales seguramente nos llevarán a estudiar mucho más...
+
+
+
+
+\section*{Agradecimientos}
+\noindent
+Quisiera expresar mi agradecimiento a la Dra. Beatriz Rumbos por la invitación a escribir este manuscrito, así como agradecer los comentarios de Armando Miguel Trejo Marrufo que ayudaron a mejorar la presentación de este trabajo, el cual tiene el apoyo de la Asociación Mexicana de Cultura A.C. También quiero agradecer a Pablo Padilla Longoria por ofrecerme y dirigirme la tesis de licenciatura con la que tanto aprendí.
+
+
+
+\bibliography{biblioMM}{}
+\bibliographystyle{plain}
+
+% \begin{thebibliography}{10}\itemsep=0pt
+% {\footnotesize
+% 
+% \bibitem{DFN} B.A. Dubrovin, A.T. Fomenko y S.R. Novikov (1992) {\it Modern Geometry - Methods and Applications. Part I}. Graduate Text in Mathematics vol. 93, Springer-Verlag, 2nd Edition.
+% 
+% \bibitem{EI} A. Einstein y L. Infeld (1993). {\it La evoluci\'on de la f\'{\i}sica}. Salvat editores.
+% 
+% \bibitem{Koe} A. Koestler (1981). {\it Los son\'ambulos}. Consejo Nacional de Ciencia y Tecnolog\'{\i}a.
+% 
+% % \bibitem{Minzoni78}
+% % A.A.~Minzoni (1978)
+% % \textit{Tópicos en Ecuaciones Diferenciales Parciales}.
+% % Serie Verde: Notas, IIMAS-UNAM.
+% 
+% \bibitem{MS97}
+% A.A.~Minzoni y N.F.~Smyth (1997)
+% ``A modulation solution of the signalling problem for the equation of self-induced transparency in the sine-Gordon limit'',
+% \textit{Methods Appl. Anal.} \textbf{4}: 1--10.
+% 
+% \bibitem{MSW04}
+% A.A.~Minzoni, N.F.~Smyth y A.L.~Worthy (2004)
+% ``Evolution of two-dimensional standing and travelling breather solutions for the sine-Gordon equation'',
+% \textit{Phys. D} \textbf{189}: 167--187. p.16.
+% 
+% \bibitem{Wa} R. Wald (1984) {\it General Relativity}. The University of Chicago Press.
+% }
+% \end{thebibliography}
+
+\end{document} 
